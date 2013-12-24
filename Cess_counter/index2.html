@@ -16,6 +16,9 @@
 		$(document).on("mobileinit", function(){
 		  $.mobile.defaultPageTransition = "slide";
 		});
+		$(document).on( "mobileinit", function() {
+			$.mobile.selectmenu.prototype.options.nativeMenu = false;
+		});
 	</script>
 	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
 	<style>

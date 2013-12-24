@@ -283,3 +283,11 @@
     -moz-animation: counter-analog2-09 .3s steps(6, end) 1;
     -ms-animation: counter-analog2-09 .3s steps(6, end) 1;
 }
+.counter2{
+/* Rotation du div */
+transform:rotate(180deg); 
+-ms-transform:rotate(180deg); /* Internet Explorer */
+-moz-transform:rotate(180deg); /* Firefox */
+-webkit-transform:rotate(180deg); /* Safari et Chrome */ 
+-o-transform:rotate(180deg); /* Opera */
+}
