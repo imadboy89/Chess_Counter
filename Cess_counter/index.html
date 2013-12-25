@@ -32,21 +32,22 @@
 		
 		.counter1{
        		position: absolute;
-       		top: 58%; 
+       		top: 56%; 
        		bottom: 2px;
+       		left :2%;
 
         }
 		.counter2{
        		position: absolute;
-       		top: 55px; 
-       		bottom: 40%; 
-
+       		top: 50px; 
+       		bottom: 44%; 
+       		left :2%;
         }
         #count{
 
 			position: absolute;
 		    left: 50%;
-		    top: 40%;
+		    top: 50%;
 		    width: 278px;
 		    height: 70px;
 		    margin-left: -139px;
@@ -89,7 +90,8 @@
 		color: #fff9d6;
 		font-weight:bold;
 		font-size: 25px;
-		text-shadow:0px 0px 0 rgb(213,213,213),0px 1px 0 rgb(193,193,193),0px 2px 0 rgb(173,173,173),0px 3px 0 rgb(153,153,153),0px 4px 0 rgb(133,133,133),0px 5px 0 rgb(113,113,113), 0px 6px 0 rgb(93,93,93),0px 7px 6px rgba(0,0,0,0.5),0px 7px 1px rgba(0,0,0,0.5),0px 0px 6px rgba(0,0,0,.2);}
+text-shadow:0px 0px 0 rgb(221,221,221),1px 0px 0 rgb(198,198,198),2px 0px 0 rgb(174,174,174), 3px 0px 0 rgb(150,150,150),4px 0px 3px rgba(0,0,0,0.55),4px 0px 1px rgba(0,0,0,0.5),0px 0px 3px rgba(0,0,0,.2);
+	}
 
 
 /*basic reset*/
@@ -102,11 +104,24 @@
 		    bottom: 100px;
 		}
 	body{
-		overflow:; hidden;
 		-moz-user-select: none;
 		-webkit-user-select: none;
 		-ms-user-select:none;
 		user-select:none;
+	}
+	html, body {
+  overflow: hidden;
+}
+	#about_text{
+	    position: fixed;
+		    left: 5px;
+		    top: 45px;
+		    right :5px;
+	    z-index:99;
+		background-color: rgba(0,0,0,0.5);
+		color : red;
+		padding :10%;
+		font-size:100%;
 	}
 	</style>
 
@@ -127,7 +142,7 @@
 		<ul data-role="listview" data-inset="true"> 
 			<li><a href="#counter" id="Start">Start</a></li> 
 			<li><a href="#Settings" id="Settings_btn" >Settings</a></li> 
-			<li><a href="#About">About</a></li> 
+			<li><a href="#About" id="about_btn">About</a></li> 
 		</ul> 
 					
 		<br />
@@ -242,15 +257,28 @@
 
 	</div>
 
-
+<!-- //////////////////////////////////////////////////////////////////////////////////// -->
 	<div data-role="page" id="About">
  
 		<div data-role="header" data-position="fixed">
 			<h1>Counter</h1>
 			<a href="#" data-rel="back" data-theme="a">Back</a>
 		</div><!-- /header --> 
-	 	<canvas id="c"></canvas>
-		
+	 	<canvas id="c">
+	 	</canvas>
+		<div id="about_text" class="Three-Dee">
+			<strong style="font-size:200%">Chess Timer V1 .</strong>
+<p style="color:white	">
+Chess Timer is a tool that let you  limit the time of a chess game .
+you can set the time and color of the player in the Settings place . </p>
+Realeased at 2013/12/25  By : <br />
+EL KHOLTI IMAD .<br />
+<a href="mailto:elkholtiimad@gmail.com" data-theme="b" data-role="button">Email me </a>
+<a href="tel:00212629414896" data-theme="b" data-role="button">Call me </a>
+this is Free application .<br />
+
+
+		</div>
 
 	</div>
 	
@@ -262,6 +290,7 @@
 
 
 <script>
+var viewport = {width  : $(window).width(),height : $(window).height()};
 $('#counter').click(function() {
 $("body").css("overflow", "hidden");
 //$(this).effect("highlight", {}, 3000);
@@ -280,8 +309,12 @@ $("body").css("overflow", "hidden");
         moves1=0;
         moves2=0;
         initialised=1;
+		$(".counter2").css( "border", "0px solid green");
+		$(".counter1").css( "border", "0px solid green");
         $(".counter1").css( "background", Pcolor1);
         $(".counter2").css( "background", Pcolor2);
+        	$("#moves1").text("0");
+        	$("#moves2").text("0");
         $( "#the_end" ).hide();
         if(Pcolor1=="black"){
         	$("#moves1").css("color","with");
@@ -492,7 +525,7 @@ function draw()
 		drops[i]++;
 	}
 }
-$("#About").click(function(){
+$("#about_btn").click(function(){
 
 setInterval(draw, 33);
 });
