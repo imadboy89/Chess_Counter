@@ -88,9 +88,12 @@
 		font-family: Geneva, serif;
 		line-height: 1em;
 		color: #fff9d6;
-		font-weight:bold;
+		/*/font-weight:bold;*/
 		font-size: 25px;
-text-shadow:0px 0px 0 rgb(221,221,221),1px 0px 0 rgb(198,198,198),2px 0px 0 rgb(174,174,174), 3px 0px 0 rgb(150,150,150),4px 0px 3px rgba(0,0,0,0.55),4px 0px 1px rgba(0,0,0,0.5),0px 0px 3px rgba(0,0,0,.2);
+/*text-shadow:0px 0px 0 rgb(210,210,210),1px 0px 0 rgb(174,174,174), 2px 0px 0 rgb(139,139,139),3px 0px 2px rgba(0,0,0,0.55),3px 0px 1px rgba(0,0,0,0.5),0px 0px 2px rgba(0,0,0,.2);*/
+
+text-shadow:0px 0px 0 rgb(210,210,210),1px 0px 0 rgb(174,174,174), 1px 0px 0 rgb(139,139,139),3px 0px 2px rgba(0,0,0,0.55),2px 0px 1px rgba(0,0,0,0.5),0px 0px 1px rgba(0,0,0,.2);
+
 	}
 
 
@@ -184,10 +187,10 @@ text-shadow:0px 0px 0 rgb(221,221,221),1px 0px 0 rgb(198,198,198),2px 0px 0 rgb(
         	</div>
 
 		</div>
-        	<div id="the_end" hidden >
+        	<div id="the_end"  >
         		<div id="end_msg_ct" class="ui-popup ui-overlay-shadow ui-corner-all Three-Dee">
 	        		<div id="end_msg"   data-corners="true" >
-						
+						hghjg
 	        		</div><br />
 	        			<a href="#counter" id="restart" data-theme="b" data-role="button">Restart</a>
         		</div>
@@ -535,4 +538,5 @@ $("#about_btn").click(function(){
  about_an = setInterval(draw, 100);
 });
 
+getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 </script>
