@@ -324,7 +324,7 @@ $("body").css("overflow", "hidden");
         }
 
         $('#counter1').addClass('counter-analog2').counter({
-            initial: "00:"+duration,//duration+":00",
+            initial: duration+":00",//"00:"+duration,
             direction: 'down',
             //interval: '100',
             format: '59:59',
@@ -498,8 +498,11 @@ for(var x = 0; x < columns; x++)
 	drops[x] = 1; 
 
 //drawing the characters
+var ttttt=100;
 function draw()
-{
+{	
+	if(ttttt<1) clearInterval(about_an);
+	ttttt-=1;
 	//Black BG for the canvas
 	//translucent BG to show trail
 	ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
@@ -525,8 +528,11 @@ function draw()
 		drops[i]++;
 	}
 }
-$("#about_btn").click(function(){
 
-setInterval(draw, 33);
+var about_an;
+$("#about_btn").click(function(){
+	ttttt=100;
+ about_an = setInterval(draw, 100);
 });
+
 </script>
