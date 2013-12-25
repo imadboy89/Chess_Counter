@@ -2,7 +2,7 @@
 <html> 
 	<head> 
 	<meta charset="utf-8" /> 
-	<title>iOS Inspired jQuery Mobile Theme</title> 
+	<title>Chess Timer</title> 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"> 	 
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<link href="distt/css/jq.css" rel="stylesheet" />
@@ -34,7 +34,6 @@
        		position: absolute;
        		top: 58%; 
        		bottom: 2px;
-       		border:  1px solid red;
 
         }
 		.counter2{
@@ -60,10 +59,63 @@
 		#moves2{
 			color: white;
 		}
+		#the_end{
+			  position: fixed;
+			  top: 0;
+			  left: 0;
+			  height: 100%;
+			  width: 100%;
+			  z-index: 10;
+			  background-color: rgba(0,0,0,0.5);
+		}
+		#end_msg_ct{
+			position: absolute;
+		    left: 50%;
+		    top: 57%;
+		    width: 220px;
+		    height: 70px;
+		    margin-left: -117px;
+		    margin-top: -35px;
+		    
+		    border 	:  5px solid #87CEEB;
+		    background-image: url("ios_inspired/images/tiling_stripes.gif");
+		    opacity:0.9;
+		    padding:10px;
+		    color :black;
+		}
+	.Three-Dee{
+		font-family: Geneva, serif;
+		line-height: 1em;
+		color: #fff9d6;
+		font-weight:bold;
+		font-size: 25px;
+		text-shadow:0px 0px 0 rgb(213,213,213),0px 1px 0 rgb(193,193,193),0px 2px 0 rgb(173,173,173),0px 3px 0 rgb(153,153,153),0px 4px 0 rgb(133,133,133),0px 5px 0 rgb(113,113,113), 0px 6px 0 rgb(93,93,93),0px 7px 6px rgba(0,0,0,0.5),0px 7px 1px rgba(0,0,0,0.5),0px 0px 6px rgba(0,0,0,.2);}
+
+
+/*basic reset*/
+/*adding a black bg to the body to make things clearer*/
+	canvas {
+		display: block; 
+			position: absolute;
+		    left: 5px;
+		    top: 45px;
+		    bottom: 100px;
+		}
+	body{
+		overflow:; hidden;
+		-moz-user-select: none;
+		-webkit-user-select: none;
+		-ms-user-select:none;
+		user-select:none;
+	}
 	</style>
 
 </head> 
-<body> 
+<body style='' 
+ unselectable='on'
+ onselectstart='return false;' 
+ >
+
 <div data-role="page"> 
  
 	<div data-role="header" data-position="fixed" > 
@@ -74,8 +126,8 @@
 
 		<ul data-role="listview" data-inset="true"> 
 			<li><a href="#counter" id="Start">Start</a></li> 
-			<li><a href="#Settings">Settings</a></li> 
-			<li><a href="#footerTabs">About</a></li> 
+			<li><a href="#Settings" id="Settings_btn" >Settings</a></li> 
+			<li><a href="#About">About</a></li> 
 		</ul> 
 					
 		<br />
@@ -91,12 +143,12 @@
  
 	<div data-role="header" data-position="fixed">
 		<h1>Counter</h1>
-		<a href="#" data-rel="back" data-theme="a">Back</a>
+		<a href="#" data-rel="back" data-theme="a" id="goback_btn">Back</a>
 		<a href="#" data-theme="c" id="playAndPause">READY !</a>
 	</div><!-- /header --> 
- 
+<!--////////////////////////////// The Counter ////////////////////////////////////////-->
 		<div data-role="content" style="" id="counter_content"> 
-			<div class="counter2 counters" style="width:95%;background:black" >
+			<div class="counter2 counters" style="width:95%;" >
 				<div id="count">
 			    	<span id="counter2" ></span>
 
@@ -106,54 +158,102 @@
 
 			   	</div>
 			</div>
-			<div class="counter1 counters" style="width:95%;background:white" >
+			<div class="counter1 counters" style="width:95%;" >
 				<div id="count">
         			<span id="counter1" ></span>
 
         			<div class="statics">
-        				<div id="mov"><img src="distt/css/images/moves.png" /><span id="moves1">0</span></div>
+        				<div id="mov"><img src="distt/css/images/moves.png" /><span id="moves1" >0</span></div>
         			</div>
         		</div>
         	</div>
-		</div>
 
+		</div>
+        	<div id="the_end" hidden >
+        		<div id="end_msg_ct" class="ui-popup ui-overlay-shadow ui-corner-all Three-Dee">
+	        		<div id="end_msg"   data-corners="true" >
+						
+	        		</div><br />
+	        			<a href="#counter" id="restart" data-theme="b" data-role="button">Restart</a>
+        		</div>
+        	</div>		
 	</div>
 
+<!--////////////////////////////// Settings ////////////////////////////////////////-->
 	<div data-role="page" id="Settings">
  
 	<div data-role="header" data-position="fixed">
 		<h1>Counter</h1>
 		<a href="#" data-rel="back" data-theme="a">Back</a>
-		<a href="#" data-theme="d" id="settings_done">Done !</a>
+		<a href="#Settings_saved_msg" data-rel="popup" data-theme="d" id="settings_done">Done !</a>
 	</div><!-- /header --> 
  
 		<div data-role="content" style="" id="Settings_ct"> 
-			<select>
-				<option value="5">5</option>
-				<option value="7">7</option>
-				<option value="10">10</option>
-				<option value="15">15</option>
-				<option value="17">17</option>
-				<option value="20">20</option>
-				<option value="25">25</option>
-				<option value="30">30</option>
-				<option value="35">35</option>
-				<option value="45">40</option>
-				<option value="50">50</option>
-				<option value="55">55</option>
-				<option value="60">60</option>
-				<option value="65">65</option>
-				<option value="70">70</option>
-				<option value="75">75</option>
-				<option value="80">80</option>
-				<option value="85">85</option>
-				<option value="90">90</option>
-				<option value="95">95</option>
-				<option value="100">100</option>
+			<label class="sett_labels" for="duration">select a duration (munites) :</label>
+			<select id="duration">
+				<option value="5" >Duration en minutes</option>
+				<option value="5">5 minute</option>
+				<option value="7">7 minute</option>
+				<option value="10">10 minute</option>
+				<option value="15">15 minute</option>
+				<option value="17">17 minute</option>
+				<option value="20">20 minute</option>
+				<option value="25">25 minute</option>
+				<option value="30">30 minute</option>
+				<option value="35">35 minute</option>
+				<option value="45">40 minute</option>
+				<option value="50">50 minute</option>
+				<option value="55">55 minute</option>
+				<option value="60">60 minute</option>
+				<option value="65">65 minute</option>
+				<option value="70">70 minute</option>
+				<option value="75">75 minute</option>
+				<option value="80">80 minute</option>
+				<option value="85">85 minute</option>
+				<option value="90">90 minute</option>
+				<option value="95">95 minute</option>
+				<option value="100">100 minute</option>
 			</select>
+			<br />
+			<label class="sett_labels" for="Pcolor1">Select a Color for Player1 :</label>
+			<select id="Pcolor1">
+				<option value="black" >black</option>
+				<option value="red">red</option>
+				<option value="white">white</option>
+				<option value="brown">brown</option>
+				<option value="blue">blue</option>
+				<option value="green">green</option>
+			</select>
+			<br/>
+			<label class="sett_labels" for="Pcolor2">Select a Color for Player2 :</label>
+			<select id="Pcolor2">
+				<option value="white" >white</option>
+				<option value="black">black</option>
+				<option value="red">red</option>
+				<option value="brown">brown</option>
+				<option value="blue">blue</option>
+				<option value="green">green</option>
+			</select>
+			<div data-role="popup" data-transition="fade" data-theme="a" data-position-to="window" id="Settings_saved_msg">
+				<img src="ios_inspired/images/tick.png">
+				<p>Settings Saved !<p>
+			</div>
 		</div>
 
 	</div>
+
+
+	<div data-role="page" id="About">
+ 
+		<div data-role="header" data-position="fixed">
+			<h1>Counter</h1>
+			<a href="#" data-rel="back" data-theme="a">Back</a>
+		</div><!-- /header --> 
+	 	<canvas id="c"></canvas>
+		
+
+	</div>
+	
 	
 </div>
 
@@ -161,90 +261,134 @@
 
 
 
-    <script>
-        //$('.counter').counter();
+<script>
+$('#counter').click(function() {
+$("body").css("overflow", "hidden");
+//$(this).effect("highlight", {}, 3000);
+});
+    //$('.counter').counter();
+    counter1=0;
+    counter2=0;
+    moves1=0;
+    moves2=0;
+    $("#Start,#restart").click(function(){
+		duration = (localStorage.ChessTimer_duration)?localStorage.ChessTimer_duration:5;
+		Pcolor1 = (localStorage.ChessTimer_Pcolor1)?localStorage.ChessTimer_Pcolor1 :"white";
+		Pcolor2 = (localStorage.ChessTimer_Pcolor2)?localStorage.ChessTimer_Pcolor2 :"black";
         counter1=0;
         counter2=0;
         moves1=0;
         moves2=0;
-        $("#Start").click(function(){
-	        counter1=0;
-	        counter2=0;
-	        moves1=0;
-	        moves2=0;
-	        $('#counter1').addClass('counter-analog2').counter({
-	            initial: '00:05',
-	            direction: 'down',
-	            //interval: '100',
-	            format: '59:59',
-	            stop: '00:00'
-	        });
-
-	        $('#counter2').addClass('counter-analog2').counter({
-	            initial: '05:00',
-	            direction: 'down',
-	            //interval: '100',
-	            format: '59:59',
-	            stop: '00:00'
-	        });
-			$("#counter1").counter("stop");
-		$("#counter2").counter("stop");
-		});
-
-        $("#counter_content").click(function(){
-        	time_switch();
-
-        });
-        function time_switch(){
-    		time1 = $.trim($("#counter1").text()).split("\n")[0];
-    		time2 = $.trim($("#counter2").text()).split("\n")[0];
-    		if(time1!="00:00" && time2!="00:00"){
-
-	        	if (counter1==1 && counter2==0){
-	        		$("#counter1").counter("stop");
-	        		$("#counter2").counter("play");
-	        		counter1=0;
-	        		counter2=1;
-	        		moves1+=1;
-	        		$("#moves1").text(moves1);
-	        	}else if(counter1==0 && counter2==1){
-	        		$("#counter1").counter("play");
-	        		$("#counter2").counter("stop");
-	        		counter1=1;
-	        		counter2=0;
-	        		moves2+=1;
-	        		$("#moves2").text(moves2);
-	        	}else if(counter1==0 && counter2==0){
-		        		$("#counter1").counter("play");
-		        		$("#counter2").counter("stop");
-		        		counter1=1;
-		        		counter2=0;
-		        		//$("#playAndPause").html("&nbsp;PAUSE&nbsp;");
-	        	}
-
-        	}else{
-        		$("#counter1").counter("stop");
-        		$("#counter2").counter("stop");
-        	}
+        initialised=1;
+        $(".counter1").css( "background", Pcolor1);
+        $(".counter2").css( "background", Pcolor2);
+        $( "#the_end" ).hide();
+        if(Pcolor1=="black"){
+        	$("#moves1").css("color","with");
         }
-        $('.counter1').on('counterStop', function() {
-        	time = $.trim($(this).text()).split("\n")[0];
-        	console.log(time);
-		    if (time=="00:00"){
-		    	alert("winn");
-		    }
-		});
-        $('.counter2').on('counterStop', function() {
-        	time = $.trim($(this).text()).split("\n")[0];
-        	console.log(time);
-		    if (time=="00:00"){
-		    	alert("winn");
-		    }
-		});
+        if(Pcolor2=="white"){
+        	$("#moves2").css("color","black");
+        }
 
-		$("#playAndPause").click(function(){
-			status = $.trim($(this).text());
-			console.log(status);
+        $('#counter1').addClass('counter-analog2').counter({
+            initial: "00:"+duration,//duration+":00",
+            direction: 'down',
+            //interval: '100',
+            format: '59:59',
+            stop: '00:00'
+        });
+
+        $('#counter2').addClass('counter-analog2').counter({
+            initial: duration+":00",
+            direction: 'down',
+            //interval: '100',
+            format: '59:59',
+            stop: '00:00'
+        });
+		$("#counter1").counter("stop");
+		$("#counter2").counter("stop");
+	});
+
+    $("#counter_content").click(function(){
+    	time_switch();
+
+    });
+    ////////////////////////////////////////////////////////////////////
+    function time_switch(){
+		time1 = $.trim($("#counter1").text()).split("\n")[0];
+		time2 = $.trim($("#counter2").text()).split("\n")[0];
+		if(time1!="00:00" && time2!="00:00"){
+
+        	if (counter1==1 && counter2==0){
+        		$("#counter1").counter("stop");
+        		$("#counter2").counter("play");
+        		counter1=0;
+        		counter2=1;
+        		moves1+=1;
+        		$("#moves1").text(moves1);
+        		$(".counter2").css( "border", "5px solid green");
+        		$(".counter1").css( "border", "0px solid green");
+        	}else if(counter1==0 && counter2==1){
+        		$("#counter1").counter("play");
+        		$("#counter2").counter("stop");
+        		counter1=1;
+        		counter2=0;
+        		moves2+=1;
+        		$("#moves2").text(moves2);
+        		$(".counter1").css( "border", "5px solid green");
+        		$(".counter2").css( "border", "0px solid green");
+        	}else if(counter1==0 && counter2==0){
+        		$("#counter1").counter("play");
+        		$("#counter2").counter("stop");
+        		counter1=1;
+        		counter2=0;
+        		//$("#playAndPause").html("&nbsp;PAUSE&nbsp;");
+        		$("#playAndPause span span").text("PAUSE")
+        		$(".counter1").css( "border", "5px solid green");
+        		$(".counter2").css( "border", "0px solid green");
+        	}
+
+    	}/*else{
+    		initialised = 0;
+    		$("#counter1").counter("stop");
+    		$("#counter2").counter("stop");
+    		winner = (time1=="00:00" && time2!="00:00")?Pcolor2:Pcolor1;
+    		$("#end_msg").text("The winner is :"+winner);
+    		$( "#the_end" ).show( "pulsate" );
+    	}*/
+    }
+////////////////////////////////////////////////////////////////
+	function show_end_msg(time){
+		time1 = $.trim($("#counter1").text()).split("\n")[0];
+		time2 = $.trim($("#counter2").text()).split("\n")[0];
+    	
+    	console.log(time);
+	    if (time=="00:00" && initialised==1){
+	    	initialised = 0;
+    		$("#counter1").counter("stop");
+    		$("#counter2").counter("stop");
+    		winner = (time1=="00:00" && time2!="00:00")?Pcolor2:Pcolor1;
+    		$("#end_msg").text("The winner is :"+winner);
+    		$( "#the_end" ).show( "slidedown" );
+    		//$("#playAndPause").attr("onclick","return false;");
+	    }
+	}
+
+    $('.counter1').on('counterStop', function() {
+    	time = $.trim($(this).text()).split("\n")[0];
+    	show_end_msg(time);
+	});
+    $('.counter2').on('counterStop', function() {
+    	time = $.trim($(this).text()).split("\n")[0];
+    	show_end_msg(time);
+	});
+
+	$("#playAndPause").click(function(){
+		status = $.trim($(this).text());
+		time1 = $.trim($("#counter1").text()).split("\n")[0];
+		time2 = $.trim($("#counter2").text()).split("\n")[0];
+
+		if(time1!="00:00" && time2!="00:00"){
 			if (status=="PLAY"){
 	        	if (counter1==1 && counter2==0){
 	        		$("#counter1").counter("play");
@@ -258,7 +402,7 @@
 				//$("#playAndPause").html("<span class=\"ui-btn-inner ui-btn-corner-all\"><span class=\"ui-btn-text\">PAUSE</span></span>");
 				$("#playAndPause span span").text("PAUSE")
 
-			}else if(status=="PAUSE"){console.log("stoppppp");
+			}else if(status=="PAUSE"){
         		$("#counter1").counter("stop");
         		$("#counter2").counter("stop");
 
@@ -267,8 +411,89 @@
 			}else if(status=="READY !" ){
 				time_switch();
 				//$("#playAndPause").html("<span class=\"ui-btn-inner ui-btn-corner-all\"><span class=\"ui-btn-text\">PAUSE</span></span>");
-				$("#playAndPause span span").text("PAUSE")
+				
 			}
+		}
 
-		});
-    </script>
+	});
+	$("#settings_done").click(function(){
+		duration = $.trim($("#duration").val());
+		Pcolor1 = $.trim($("#Pcolor1").val());
+		Pcolor2 = $.trim($("#Pcolor2").val());
+		console.log(duration+Pcolor1+Pcolor2);
+		localStorage.ChessTimer_duration = duration;
+		localStorage.ChessTimer_Pcolor1 = Pcolor1;
+		localStorage.ChessTimer_Pcolor2 = Pcolor2;
+	    //setTimeout(function() { $("#Settings_saved_msg").hide()}, 2000);
+	});
+	$("#Settings_btn").click(function(){
+		duration = (localStorage.ChessTimer_duration)?localStorage.ChessTimer_duration:5;
+		Pcolor1 = (localStorage.ChessTimer_Pcolor1)?localStorage.ChessTimer_Pcolor1 :"white";
+		Pcolor2 = (localStorage.ChessTimer_Pcolor2)?localStorage.ChessTimer_Pcolor2 :"black";
+		console.log(duration+Pcolor1+Pcolor2);
+		$('#duration').val(duration);
+		$('#Pcolor1').val(Pcolor1);
+		$('#Pcolor2').val(Pcolor2);
+
+	});
+
+$("#goback_btn").click(function(){
+		$("#counter1").counter("stop");
+		$("#counter2").counter("stop");
+	});
+
+
+var c = document.getElementById("c");
+var ctx = c.getContext("2d");
+
+//making the canvas full screen
+c.height = window.innerHeight;
+c.width = window.innerWidth;
+
+//chinese characters - taken from the unicode charset
+var chinese = "01";
+//converting the string into an array of single characters
+chinese = chinese.split("");
+
+var font_size = 10;
+var columns = c.width/font_size; //number of columns for the rain
+//an array of drops - one per column
+var drops = [];
+//x below is the x coordinate
+//1 = y co-ordinate of the drop(same for every drop initially)
+for(var x = 0; x < columns; x++)
+	drops[x] = 1; 
+
+//drawing the characters
+function draw()
+{
+	//Black BG for the canvas
+	//translucent BG to show trail
+	ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+	ctx.fillRect(0, 0, c.width, c.height);
+	
+	ctx.fillStyle = "#0F0"; //green text
+	ctx.font = font_size + "px arial";
+	//looping over drops
+	
+	for(var i = 0; i < drops.length; i++)
+	{
+		//a random chinese character to print
+		var text = chinese[Math.floor(Math.random()*chinese.length)];
+		//x = i*font_size, y = value of drops[i]*font_size
+		ctx.fillText(text, i*font_size, drops[i]*font_size);
+		
+		//sending the drop back to the top randomly after it has crossed the screen
+		//adding a randomness to the reset to make the drops scattered on the Y axis
+		if(drops[i]*font_size > c.height && Math.random() > 0.975)
+			drops[i] = 0;
+		
+		//incrementing Y coordinate
+		drops[i]++;
+	}
+}
+$("#About").click(function(){
+
+setInterval(draw, 33);
+});
+</script>
