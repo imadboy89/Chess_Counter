@@ -3,7 +3,7 @@
         xmlns:gap   = "http://phonegap.com/ns/1.0"
         id          = "com.imad.Chess_Timer"
         versionCode = "17" 
-        version     = "1.1.0" >
+        version     = "1.2.0" >
 
     <!-- versionCode is optional and Android only -->
 
@@ -13,7 +13,7 @@
         Chess Timer is an counter for real Chess game . 
     </description>
 
-    <author href="https://imad-kh.tk" email="imadelkholti@gmail.com">
+    <author href="http://coding-labs.com" email="imadelkholti@gmail.com">
         Imad El kholti
     </author>
 <icon src="icon.png" />
