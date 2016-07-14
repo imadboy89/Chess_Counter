@@ -300,10 +300,10 @@ this is Free application .<br />
     if (admob) {
       var adPublisherIds = {
         ios : {
-          banner : "ca-app-pub-5231842333475288/1159723459"
+          banner : "ca-app-pub-5231842333475288/4321352650"
         },
         android : {
-          banner : "ca-app-pub-5231842333475288/1159723459",
+          banner : "ca-app-pub-5231842333475288/4321352650",
           interstitial : "ca-app-pub-5231842333475288/4113189854",
         }
       };
@@ -327,7 +327,7 @@ this is Free application .<br />
       admob.showInterstitialAd();
       showNextInterstitial = setTimeout(function() {
         admob.requestInterstitialAd();
-      }, 40 * 1000); // 2 minutes
+      }, 2*60 * 1000); // 2 minutes
     }
   }
 
