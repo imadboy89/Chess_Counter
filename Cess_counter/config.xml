@@ -22,7 +22,5 @@
 <preference name="fullscreen" value="true" />
 <gap:plugin name="phonegap-admob" source="npm" />
 <!-- <gap:splash src="splash.jpg" /> -->
-<feature name="Insomnia">
-  <param name="android-package" value="nl.xservices.plugins.Insomnia" />
-</feature>
+<plugin name="cordova-plugin-insomnia" version="4.1.0" source="npm" />
 </widget>
