@@ -22,5 +22,7 @@
 <preference name="fullscreen" value="true" />
 <gap:plugin name="phonegap-admob" source="npm" />
 <!-- <gap:splash src="splash.jpg" /> -->
-<uses-permission android:name="android.permission.WAKE_LOCK" />
+<feature name="Insomnia">
+  <param name="android-package" value="nl.xservices.plugins.Insomnia" />
+</feature>
 </widget>
