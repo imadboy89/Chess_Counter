@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
     <widget xmlns   = "http://www.w3.org/ns/widgets"
         xmlns:gap   = "http://phonegap.com/ns/1.0"
-        id          = "com.imad.Chess_Timer"
-        versionCode = "17" 
+        id          = "com.coding_labs.Chess_Timer"
+        versionCode = "12" 
         version     = "1.2.0" >
 
     <!-- versionCode is optional and Android only -->
@@ -13,13 +13,14 @@
         Chess Timer is an counter for real Chess game . 
     </description>
 
-    <author href="http://coding-labs.com" email="imadelkholti@gmail.com">
-        Imad El kholti
+    <author href="http://coding-labs.com" email="admin@coding-labs.com">
+        ImadOs
     </author>
 <icon src="icon.png" />
 
 <preference name="orientation" value="portrait" />
 <preference name="fullscreen" value="true" />
-<gap:splash src="splash.jpg" />
-<!--<uses-permission android:name="android.permission.WAKE_LOCK" />-->
+<gap:plugin name="phonegap-admob" source="npm" />
+<!-- <gap:splash src="splash.jpg" /> -->
+<uses-permission android:name="android.permission.WAKE_LOCK" />
 </widget>
